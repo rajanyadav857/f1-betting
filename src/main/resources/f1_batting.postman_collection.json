@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "101117f1-b288-4725-8fb4-731542211d59",
+		"name": "f1_batting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11187764"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/events",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/events",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"events"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2023",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/bet",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": 2,\r\n  \"eventId\": \"EVT20250602\",\r\n  \"driverId\": \"DRV9876\",\r\n  \"amount\": 150.75\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/bet",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/simulate",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eventId\" : \"\",\r\n    \"winningDriverId\" : \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/simulate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"simulate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
