@@ -32,11 +32,36 @@ pipeline {
             }
         }
 
+        stage('Docker Build & Deploy') {
+            steps {
+                script {
+                    def imageName = "myapp:${env.BRANCH_NAME}"
+
+                    echo "📦 Building Docker image: ${imageName}"
+                    sh "docker build -t ${imageName} ."
+
+                    echo "🛑 Stopping and removing old container if running"
+                    sh """
+                        docker stop myapp-container || true
+                        docker rm myapp-container || true
+                    """
+
+                    echo "🚀 Starting new container"
+                    sh """
+                        docker run -d \
+                            --name myapp-container \
+                            -p 8080:8080 \
+                            ${imageName}
+                    """
+                }
+            }
+        }
+
     }
 
     post {
         success {
-            echo "Build successful for branch: ${env.BRANCH_NAME}"
+            echo "Build & Deploy successful for branch: ${env.BRANCH_NAME}"
         }
         failure {
             echo "Build failed for branch: ${env.BRANCH_NAME}"
