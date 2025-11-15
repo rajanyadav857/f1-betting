@@ -50,7 +50,7 @@ pipeline {
                     sh """
                         docker run -d \
                             --name myapp-container \
-                            -p 8080:8080 \
+                            -p 9091:8080 \
                             ${imageName}
                     """
                 }
